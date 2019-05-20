@@ -11,7 +11,8 @@
 			<button v-on:click="alert">Show Alert</button>
 			<p>{{test}}</p>
 			<input type="" name="" v-on:keydown="testfunc">
-			<input type="" name="" v-on:keydown.enter="testfunc">
+			<p>{{testa}}</p>
+			<input type="" name="" v-on:keydown.enter="testfunca">
 		</h2>
 	</div>
 
@@ -19,7 +20,8 @@
 		new Vue({
 			el: '#app',
 		  data: {
-		  	test: "ok"
+		  	test: "",
+		  	testa: ""
 		  },
 		  methods:{
 		  	
@@ -28,6 +30,9 @@
 		  	},
 		  	testfunc: function(event){
 		  		this.test = event.target.value
+		  	},
+		  	testfunca: function(event){
+		  		this.testa = event.target.value
 		  	}
 
 		  }
