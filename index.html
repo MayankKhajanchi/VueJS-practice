@@ -8,7 +8,7 @@
 	
 	<div id="app">
 	  <h1 v-once>{{ title }}</h1>
-
+	  <input type="" name="" v-on:keypress = 'done'>
 	  <p>{{ changeTitle() }} - <a v-bind:href="link">Google</a></p>
 	  <hr>
 	  <p v-html="finishedLink"></p>
@@ -26,6 +26,9 @@
 		  	changeTitle: function(){
 		  		this.title = "Hello"
 		    	return this.title;
+		    },
+		    done: function(event){
+		    	console.log(event.target.value)
 		    }
 		  }
 		})
