@@ -7,10 +7,15 @@
 <body>
 	
 	<div id="app">
-		<input type="button" name="" value="-" v-on:click="decrease">
+		<input type="button" name="" value="-" v-on:click="decrease(2)">
 		<p>{{counter}}</p>
-		<input type="button" name="" value="+" v-on:click="increase">
+		<input type="button" name="" value="+" v-on:click="increase(2)">
 		<input type="button" name="" value="reset" v-on:click="reset">
+		<h2 v-on:mousemove="updateCoordinates">
+			{{x}}/{{y}}
+			<span v-on:mousemove.stop="">DEAD SPOT</span>
+			<input type="" name="" v-on:keyup="alert">
+		</h2>
 	</div>
 
 	<script>
@@ -18,17 +23,26 @@
 			el: '#app',
 		  data: {
 		  	title: 'Hello World',
-		  	counter: 0
+		  	counter: 0,
+		  	x: 0,
+		  	y: 0
 		  },
 		  methods:{
-		  	increase: function(){
-		  		return this.counter = this.counter + 1
+		  	increase: function(x){
+		  		return this.counter = this.counter + x
 		  	},
-		  	decrease: function(){
-		  		return this.counter = this.counter - 1
+		  	decrease: function(x){
+		  		return this.counter = this.counter - x
 		  	},
 		  	reset: function(){
 		  		return this.counter = 0;
+		  	},
+		  	updateCoordinates: function(event){
+		  		this.x = event.clientX;
+		  		this.y = event.clientY;
+		  	},
+		  	alert: function(){
+		  		alert('ALERT !')
 		  	}
 		  }
 		})
