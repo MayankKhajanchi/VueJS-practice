@@ -14,7 +14,7 @@
 		<h2 v-on:mousemove="updateCoordinates">
 			{{x}}/{{y}}
 			<span v-on:mousemove.stop="">DEAD SPOT</span>
-			<input type="" name="" v-on:keyup="alert">
+			<input type="" name="" v-on:keyup.enter.space="alert">
 		</h2>
 	</div>
 
