@@ -7,29 +7,29 @@
 <body>
 	
 	<div id="app">
-	  <h1 v-once>{{ title }}</h1>
-	  <input type="" name="" v-on:keypress = 'done'>
-	  <p>{{ changeTitle() }} - <a v-bind:href="link">Google</a></p>
-	  <hr>
-	  <p v-html="finishedLink"></p>
+		<input type="button" name="" value="-" v-on:click="decrease">
+		<p>{{counter}}</p>
+		<input type="button" name="" value="+" v-on:click="increase">
+		<input type="button" name="" value="reset" v-on:click="reset">
 	</div>
-	<!-- <script src="index.js"></script> -->
+
 	<script>
 		new Vue({
 			el: '#app',
 		  data: {
 		  	title: 'Hello World',
-		  	link: 'http://google.com',
-		  	finishedLink: '<a href="http://google.com">Google</a>'
+		  	counter: 0
 		  },
 		  methods:{
-		  	changeTitle: function(){
-		  		this.title = "Hello"
-		    	return this.title;
-		    },
-		    done: function(event){
-		    	console.log(event.target.value)
-		    }
+		  	increase: function(){
+		  		return this.counter = this.counter + 1
+		  	},
+		  	decrease: function(){
+		  		return this.counter = this.counter - 1
+		  	},
+		  	reset: function(){
+		  		return this.counter = 0;
+		  	}
 		  }
 		})
 	</script>
