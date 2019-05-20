@@ -7,33 +7,22 @@
 <body>
 	
 	<div id="app">
-		
-			<button v-on:click="alert">Show Alert</button>
-			<p>{{test}}</p>
-			<input type="" name="" v-on:keydown="testfunc">
-			<p>{{testa}}</p>
-			<input type="" name="" v-on:keydown.enter="testfunca">
-		</h2>
+		<input type="" name="" v-model="name">
+		<p>{{name}}</p>
+		<p>{{counter}}</p>
+		<button @click="counter++">Increase</button>
+		<button @click="counter--">Decrease</button>
+		<p>{{counter > 5 ? "Greater than 5" : "Smaller than 5"}}</p>
 	</div>
 
 	<script>
 		new Vue({
 			el: '#app',
 		  data: {
-		  	test: "",
-		  	testa: ""
+		  	name: "Mayank",
+		  	counter: 0,
 		  },
 		  methods:{
-		  	
-		  	alert: function(){
-		  		alert('ALERT !')
-		  	},
-		  	testfunc: function(event){
-		  		this.test = event.target.value
-		  	},
-		  	testfunca: function(event){
-		  		this.testa = event.target.value
-		  	}
 
 		  }
 		})
