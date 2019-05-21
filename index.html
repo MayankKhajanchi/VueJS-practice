@@ -6,112 +6,23 @@
 	
 </head>
 <style type="text/css">
-		#app{
-			display: flex;
-			flex-direction: column;
-		}
-		#exercise{
-			height: 100px;
-			border: 2px solid black;
-		}
-		.highlight{
-			background-color: red !important;
-			width: 200px !important;
-		}
-		.shrink{
-			background: grey !important;
-			width: 50px !important;
-		}
-		.tc{
-			text-align:center;
-		}
-		.w100{
-		}
-		.h25{
-			height: 25px;
-		}
-		.font18{
-			font-size: 18px;
-		}
-		.bgred{
-			background-color: red;
-		}
-		.red{
-			background: red;
-		}
-		.blue{
-			background-color: blue;
-		}
-		.maroon{
-			background-color: maroon;
-		}
-		.grey{
-			background-color: grey;
-		}
-		.border{
-			border: 2px solid black;
-		}
-		.orange{
-			color: orange;
-		}
-		.progressBar{
-			height: 5px;
-			background: red;
-		}
-	</style>
+</style>
 <body>
 	
-	<div id="app">
-		<div>
-			<button type="" @click="alternate">Start Test</button>
-		</div>
-		<div id="exercise" :class="{highlight: alt, shrink: !alt}"></div>
-		<div v-bind:class="[tc, w100, h25, font18, bgred, test]">
-			hey
-		</div>
-		<input type="" name="" v-model="test">
-
-		<div :class="[orange, userInput == 'true' ? 'border' : '']">
-			hello	
-		</div>
-		<input type="" name="" v-model="userInput">
-
-		<div class="progressBar" :style="{width: width + 'px'}">
-			
-		</div>
-		<button type="" @click="progress">Start Progress Bar</button>
+	<div id="app">		
+		<div v-if="show">Show</div>
+		<button @click="toggle">{{ show ? 'Hide' : 'Show' }}</button>
 	</div>
-
 
 	<script>
 		new Vue({
 			el: '#app',
 		  data: {
-		  	alt: false,
-		  	tc: 'tc',
-		  	w100: 'w100',
-		  	h25: 'h25',
-		  	font18: 'font18',
-		  	bgred: ' bgred',
-		  	test: 'grey',
-		  	border: 'border',
-		  	orange: 'orange',
-		  	width: 0,
-		  	userInput: false
+		  	show: true
 		  },
 		  methods:{
-		  	alternate(){
-		  		var that = this;
-		  		setInterval(function(){
-		  			console.log('hey');
-		  			that.alt = !that.alt
-		  		}, 1000)
-		  	},
-		  	progress(){
-		  		var that = this;
-		  		setInterval(function(){
-		  			that.width += 5
-		  		}, 100)
+		  	toggle: function(){
+		  		this.show = !this.show
 		  	}
 		  }
 		})
