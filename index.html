@@ -10,20 +10,43 @@
 <body>
 	
 	<div id="app">		
-		<div v-if="show">Show</div>
-		<button @click="toggle">{{ show ? 'Hide' : 'Show' }}</button>
+		<template>
+			<p>Black Matter</p>
+		</template>
+		<ul>
+			<p v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</p>
+			<hr>
+			<p v-for="person in persons">{{ person.name }}</p>
+			<hr>
+			<template v-for="(ingredient, i) in ingredients">
+				<h5>{{ ingredient }}</h5>
+				<p>{{ i }}</p>
+			</template>
+		</ul>
+		<p>{{ counter }}</p>
+		<button @click="increase">Increase</button>
 	</div>
+
 
 	<script>
 		new Vue({
 			el: '#app',
 		  data: {
-		  	show: true
+		  	counter: 0,
+		  	show: true,
+		  	ingredients: ['uranium', 'oxygen', 'lead'],
+		  	persons: [
+		  		{name: 'John', age: 22},
+		  		{name: 'Doe', age: 22}
+		  	]
 		  },
 		  methods:{
 		  	toggle: function(){
 		  		this.show = !this.show
 		  	}
+		  },
+		  increase(){
+		  	this.counter =
 		  }
 		})
 	</script>
