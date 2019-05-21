@@ -3,35 +3,66 @@
 <head>
 	<title>VueJS</title>
 	<script src="vue.js"></script>
+	<style type="text/css">
+		.demo{
+			background: grey;
+			height:100px;
+			width: 100px;
+			margin: 30px;
+		}
+		.red{
+			background: red;
+		}
+		.green{
+			background: green;
+		}
+		.blue{
+			background: blue;
+		}
+		.h50{
+			height: 50px;
+		}
+	</style>
 </head>
 <body>
 	
 	<div id="app">
-		<button @click="value += 5">Add 5</button>
-		<button @click="value += 1">Add 1</button>
-		<p>{{value}} | {{check}}</p>
+		<div 
+			class="demo" 
+			@click="attachRed = !attachRed"
+			:class="[color1, height]"
+			:style="{background: color1, height: height + 'px'}"
+		>
+			</div>
+			<input type="" name="" v-model='color1'>
+			<input type="" name="" v-model='height'>
+		<div 
+			class="demo"
+			:class="color2"
+		></div>
+		<input type="" name="" v-model='color2'>
+		<div
+			class="demo"
+			:class="color3"
+		></div>
+		<input type="" name="" v-model='color3'>
+		<hr>
+
 	</div>
+
 
 	<script>
 		new Vue({
 			el: '#app',
 		  data: {
-		  	value: 0
+		  	attachRed: false,
+		  	color1: 'red',
+		  	color2: 'green',
+		  	color3: 'blue',
+		  	height: 100
 		  },
-		  computed:{
-		  	check: function(value){
-		  		return this.value < 37 ? "Not there yet" : this.value == 37 ? "Bingo" : "You went beyond 37"
-		  	}
-		  },
-		  watch:{
-		  	value: function(value){
-		  		var that = this
-		  		setTimeout(function(){
-		  			that.value = 0;
-		  		}, 5000)
-		  	}
-		  }
 		})
 	</script>
+
 </body>
 </html>
