@@ -7,23 +7,29 @@
 <body>
 	
 	<div id="app">
-		<input type="" name="" v-model="name">
-		<p>{{name}}</p>
-		<p>{{counter}}</p>
-		<button @click="counter++">Increase</button>
-		<button @click="counter--">Decrease</button>
-		<p>{{counter > 5 ? "Greater than 5" : "Smaller than 5"}}</p>
+		<button @click="value += 5">Add 5</button>
+		<button @click="value += 1">Add 1</button>
+		<p>{{value}} | {{check}}</p>
 	</div>
 
 	<script>
 		new Vue({
 			el: '#app',
 		  data: {
-		  	name: "Mayank",
-		  	counter: 0,
+		  	value: 0
 		  },
-		  methods:{
-
+		  computed:{
+		  	check: function(value){
+		  		return this.value < 37 ? "Not there yet" : this.value == 37 ? "Bingo" : "You went beyond 37"
+		  	}
+		  },
+		  watch:{
+		  	value: function(value){
+		  		var that = this
+		  		setTimeout(function(){
+		  			that.value = 0;
+		  		}, 5000)
+		  	}
 		  }
 		})
 	</script>
