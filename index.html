@@ -5,48 +5,55 @@
 	<script src="vue.js"></script>
 	
 </head>
-<style type="text/css">
-</style>
 <body>
+	<div id="app">	
 	
-	<div id="app">		
-		<template>
-			<p>Black Matter</p>
-		</template>
-		<ul>
-			<p v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</p>
-			<hr>
-			<p v-for="person in persons">{{ person.name }}</p>
-			<hr>
-			<template v-for="(ingredient, i) in ingredients">
-				<h5>{{ ingredient }}</h5>
-				<p>{{ i }}</p>
-			</template>
-		</ul>
-		<p>{{ counter }}</p>
-		<button @click="increase">Increase</button>
+	<div>
+		1.
+		<button @click="toggle">Toggle</button>
+		<p v-show="a">Now you see me</p>
+		<p v-show="!a">Now you don't</p>
+	</div>	
+
+	<div>
+		2.
+		<span v-for="x in alphabets">{{x}} </span>
 	</div>
 
+	<div v-for="band in bands">
+		3.
+		<p v-for="(value, key, index) in band">{{ key }}  {{ value }} ({{ index }})</p>
+	</div>
 
+	4.
+
+	<div v-for="value in four">
+		<template v-if="Array.isArray(value)">
+			<p v-for="element in value">{{element}}</p>
+		</template>
+		<template v-else>
+			{{value}}
+		</template>
+	</div>
+
+	</div>
 	<script>
 		new Vue({
 			el: '#app',
 		  data: {
-		  	counter: 0,
-		  	show: true,
-		  	ingredients: ['uranium', 'oxygen', 'lead'],
-		  	persons: [
-		  		{name: 'John', age: 22},
-		  		{name: 'Doe', age: 22}
-		  	]
+		  	a: true,
+		  	alphabets:['a','b','c'],
+		  	bands:[
+		  		{name: 'Pink Floyd', genre:'Prog'},
+		  		{name: 'Metallica', genre: 'Heavy metal'},
+		  		{name: 'AC/DC', genre: 'Hard Rock'}
+		  	],
+		  	four: {name: 'TEST',data: [1,2,3,4,5]}
 		  },
 		  methods:{
-		  	toggle: function(){
-		  		this.show = !this.show
-		  	}
-		  },
-		  increase(){
-		  	this.counter =
+		  	toggle(){
+		  		this.a = !this.a
+		  	},
 		  }
 		})
 	</script>
