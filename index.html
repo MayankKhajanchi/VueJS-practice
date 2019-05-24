@@ -6,49 +6,20 @@
 	
 </head>
 <body>
-	<div id="app">	
-	
-	<div>
-		1.
-		<button @click="toggle">Toggle</button>
-		<p v-show="a">Now you see me</p>
-		<p v-show="!a">Now you don't</p>
-	</div>	
 
-	<div>
-		2.
-		<span v-for="x in alphabets">{{x}} </span>
+	<div id="app1">	
+{{a}}
 	</div>
 
-	<div v-for="band in bands">
-		3.
-		<p v-for="(value, key, index) in band">{{ key }}  {{ value }} ({{ index }})</p>
+	<div id="app2">	
+	{{name}}
 	</div>
 
-	4.
-
-	<div v-for="value in four">
-		<template v-if="Array.isArray(value)">
-			<p v-for="element in value">{{element}}</p>
-		</template>
-		<template v-else>
-			{{value}}
-		</template>
-	</div>
-
-	</div>
 	<script>
-		new Vue({
-			el: '#app',
+		var vm1 = new Vue({
+			el: '#app1',
 		  data: {
 		  	a: true,
-		  	alphabets:['a','b','c'],
-		  	bands:[
-		  		{name: 'Pink Floyd', genre:'Prog'},
-		  		{name: 'Metallica', genre: 'Heavy metal'},
-		  		{name: 'AC/DC', genre: 'Hard Rock'}
-		  	],
-		  	four: {name: 'TEST',data: [1,2,3,4,5]}
 		  },
 		  methods:{
 		  	toggle(){
@@ -56,6 +27,14 @@
 		  	},
 		  }
 		})
+
+		var vm2 = new Vue({
+			el: '#app2',
+			data: {
+				name: 'Mayank'
+			}
+		});
+		console.log(vm1);
 	</script>
 
 </body>
