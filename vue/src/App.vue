@@ -1,13 +1,13 @@
 <template>
-  <div id="app">
-    {{k}}
-  </div>
+	<div class="container"> 
+	    <app-header></app-header>
+			<app-body></app-body>
+			<app-footer></app-footer>
+	</div>
 </template>
 
 <script>
-export default {
-  data: function(){
-    return {k: 'hello world'}
-  }
-}
+import Vue from 'vue';
+	import Header from './Header.vue';
+	Vue.component('app-header', Header);
 </script>
